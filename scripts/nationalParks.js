@@ -1,8 +1,7 @@
-// function loadParks() {
-//     for (const park of nationalParksArray) {
+"use strict";
 
-//     }
-// }
+let statesDDL = document.querySelector("#states-DDL");
+const parkTableBody = document.querySelector("#parks-table-body");
 
 function buildParkRow(tbody, park) {
   let row = tbody.insertRow(-1);
@@ -26,17 +25,64 @@ function buildParkRow(tbody, park) {
   cell6.innerText = park.Phone;
 
   let cell7 = row.insertCell(6);
-  if (park.Visit == -1) {
-    cell7.innerText = "No URL"
+
+  if (!park.Visit) {
+    cell7.innerText = "No URL Available";
+  } else {
+    cell7.innerText = park.Visit;
   }
-  cell7.innerText = park.Visit;
+}
+
+function stateLocationList() {
+  let count = 0;
+
+  let selectOption = document.createElement("option");
+  selectOption.value = " ";
+  selectOption.textContent = "Select State...";
+  statesDDL.appendChild(selectOption);
+
+  //Make list of options from array
+  for (const state of statesArray) {
+    let option = new Option(state, count);
+    statesDDL.appendChild(option);
+    count++;
+  }
+}
+
+function checkButtonValue() {
+  const selectedOption = document.querySelector('#button-choices input[name="button-choices"]:checked');
+  return selectedOption ? selectedOption.id : null;
+}
+
+function filterParksByState(state) {
+  if (checkButtonValue() == "Location") {
+    return nationalParksArray.filter(function (park) {
+      return park.State == state;
+    });
+  }
+}
+
+function filterParksByType(type) {
+  if (checkButtonValue() == "Type") {
+    return nationalParksArray.filter(function (park) {
+      return park.Location["type"] == type;
+    });
+  }
 }
 
 function loadParkTable() {
-  const parkTableBody = document.querySelector("#parks-table-body");
-  for (const park of nationalParksArray) {
+  clearTable();
+  let stateIndex = parseInt(statesDDL.value);
+  let selectedState = statesArray[stateIndex];
+  let filteredParksByStateList = filterParksByState(selectedState);
+
+  for (const park of filteredParksByStateList) {
     buildParkRow(parkTableBody, park);
   }
 }
 
-loadParkTable();
+function clearTable() {
+  parkTableBody.innerHTML = "";
+}
+
+stateLocationList();

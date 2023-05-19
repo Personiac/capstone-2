@@ -28,21 +28,28 @@
       </nav>
     </header>
     <main>
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>City</th>
-                    <th>State</th>
-                    <th>ZIP</th>
-                    <th>Phone</th>
-                    <th>Website</th>
-                </tr>
-            </thead>
-            <tbody id="parks-table-body">
-            </tbody>
-        </table>
+      <section id="button-choices">
+        <input id="park-location-button" type="radio" name="button-choices"/>
+        <label for="park-location-button">By Location</label>
+
+        <input id="park-type-button" type="radio" name="button-choices"/>
+        <label for="park-type-button">By Type</label>
+      </section>
+      <select id="states-DDL" onchange="loadParkTable();"></select>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>ZIP</th>
+            <th>Phone</th>
+            <th>Website</th>
+          </tr>
+        </thead>
+        <tbody id="parks-table-body"></tbody>
+      </table>
     </main>
     <script src="scripts/locationData.js"></script>
     <script src="scripts/parkTypeData.js"></script>
