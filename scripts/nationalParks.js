@@ -11,7 +11,11 @@ function buildParkRow(tbody, park) {
   cell1.innerText = park.LocationName;
 
   let cell2 = row.insertCell(1);
-  cell2.innerText = park.Address;
+  if (!park.Address) {
+    cell2.innerText = "No Address";
+  } else {
+    cell2.innerText = park.Address;
+  }
 
   let cell3 = row.insertCell(2);
   cell3.innerText = park.City;
@@ -20,17 +24,24 @@ function buildParkRow(tbody, park) {
   cell4.innerText = park.State;
 
   let cell5 = row.insertCell(4);
-  cell5.innerText = park.ZipCode;
+  if (!park.ZipCode) {
+    cell5.innerText = "No ZIP";
+  } else {
+    cell5.innerText = park.ZipCode;
+  }
 
   let cell6 = row.insertCell(5);
-  cell6.innerText = park.Phone;
+  if (!park.Phone) {
+    cell6.innerText = "No Phone";
+  } else {
+    cell6.innerText = park.Phone;
+  }
 
   let cell7 = row.insertCell(6);
-
   if (!park.Visit) {
-    cell7.innerText = "No URL Available";
+    cell7.innerText = "No URL";
   } else {
-    cell7.innerText = park.Visit;
+    cell7.innerHTML = `<a href="${park.Visit}" target="_blank">Visit Page</a>`;
   }
 }
 
@@ -67,15 +78,12 @@ function parkTypeList() {
 }
 
 function checkButtonValue() {
-  // const selectedOption = parseInt(document.querySelector('input[name="button-choices"]:checked').value);
   const selectedOption = document.querySelector('input[name="button-choices"]:checked').value;
-  // statesDDL.style.display = "none";
   if (selectedOption == 1) {
     statesDDL.style.display = "block";
     parkTypesDDL.style.display = "none";
     clearTable();
     stateLocationList();
-    // loadParkByStateTable();
     clearDDL(parkTypesDDL);
   }
   if (selectedOption == 2) {
@@ -83,7 +91,6 @@ function checkButtonValue() {
     statesDDL.style.display = "none";
     clearTable();
     parkTypeList();
-    // loadParkByTypeTable();
     clearDDL(statesDDL);
   }
 }
@@ -102,11 +109,7 @@ function filterParksByType(type) {
 
 function loadParkByStateTable() {
   clearTable();
-  // hideActivityDetails(true);
-  // if (parkTypeList.value == "") {
-  //   parkTableBody.innerHTML = "";
-  //   return;
-  // }
+
   let stateIndex = parseInt(statesDDL.value);
   let selectedState = statesArray[stateIndex];
   let filteredParksByStateList = filterParksByState(selectedState);
@@ -114,17 +117,11 @@ function loadParkByStateTable() {
   for (const park of filteredParksByStateList) {
     buildParkRow(parkTableBody, park);
   }
-
-  // hideActivityDetails(false);
 }
 
 function loadParkByTypeTable() {
   clearTable();
-  // hideActivityDetails(true);
-  // if (stateLocationList.value == "") {
-  //   parkTableBody.innerHTML = "";
-  //   return;
-  // }
+
   let typeIndex = parseInt(parkTypesDDL.value);
   let selectedType = parkTypesArray[typeIndex];
   let filteredParksByTypeList = filterParksByType(selectedType);
@@ -132,8 +129,6 @@ function loadParkByTypeTable() {
   for (const park of filteredParksByTypeList) {
     buildParkRow(parkTableBody, park);
   }
-
-  // hideActivityDetails(false);
 }
 
 function clearTable() {
@@ -143,11 +138,3 @@ function clearTable() {
 function clearDDL(dropList) {
   dropList.innerHTML = "";
 }
-
-// function hideActivityDetails(hide) {
-//   if (hide) {
-//     parkTableBody.style.display = "none";
-//     return;
-//   }
-//   parkTableBody.style.display = "block";
-// }
