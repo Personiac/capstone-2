@@ -28,15 +28,15 @@
       </nav>
     </header>
     <main>
-      <section id="button-choices">
+      <section id="button-choices" onchange="checkButtonValue();">
         <input id="park-location-button" type="radio" name="button-choices" value="1"/>
         <label for="park-location-button">By Location</label>
 
         <input id="park-type-button" type="radio" name="button-choices" value="2"/>
         <label for="park-type-button">By Type</label>
       </section>
-      <select id="states-DDL" onchange="loadParkByStateTable();"></select>
-      <select id="park-types-DDL" onchange="loadParkByTypeTable();"></select>
+      <select id="states-DDL" onchange="loadParkByStateTable();" style="display: none;"></select>
+      <select id="park-types-DDL" onchange="loadParkByTypeTable();" style="display: none;"></select>
       <table>
         <thead>
           <tr>

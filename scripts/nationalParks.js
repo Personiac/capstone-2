@@ -69,11 +69,22 @@ function parkTypeList() {
 function checkButtonValue() {
   // const selectedOption = parseInt(document.querySelector('input[name="button-choices"]:checked').value);
   const selectedOption = document.querySelector('input[name="button-choices"]:checked').value;
+  // statesDDL.style.display = "none";
   if (selectedOption == 1) {
+    statesDDL.style.display = "block";
+    parkTypesDDL.style.display = "none";
+    clearTable();
     stateLocationList();
+    // loadParkByStateTable();
+    clearDDL(parkTypesDDL);
   }
   if (selectedOption == 2) {
+    parkTypesDDL.style.display = "block";
+    statesDDL.style.display = "none";
+    clearTable();
     parkTypeList();
+    // loadParkByTypeTable();
+    clearDDL(statesDDL);
   }
 }
 
@@ -91,6 +102,11 @@ function filterParksByType(type) {
 
 function loadParkByStateTable() {
   clearTable();
+  // hideActivityDetails(true);
+  // if (parkTypeList.value == "") {
+  //   parkTableBody.innerHTML = "";
+  //   return;
+  // }
   let stateIndex = parseInt(statesDDL.value);
   let selectedState = statesArray[stateIndex];
   let filteredParksByStateList = filterParksByState(selectedState);
@@ -98,10 +114,17 @@ function loadParkByStateTable() {
   for (const park of filteredParksByStateList) {
     buildParkRow(parkTableBody, park);
   }
+
+  // hideActivityDetails(false);
 }
 
 function loadParkByTypeTable() {
   clearTable();
+  // hideActivityDetails(true);
+  // if (stateLocationList.value == "") {
+  //   parkTableBody.innerHTML = "";
+  //   return;
+  // }
   let typeIndex = parseInt(parkTypesDDL.value);
   let selectedType = parkTypesArray[typeIndex];
   let filteredParksByTypeList = filterParksByType(selectedType);
@@ -109,9 +132,22 @@ function loadParkByTypeTable() {
   for (const park of filteredParksByTypeList) {
     buildParkRow(parkTableBody, park);
   }
+
+  // hideActivityDetails(false);
 }
 
 function clearTable() {
   parkTableBody.innerHTML = "";
 }
 
+function clearDDL(dropList) {
+  dropList.innerHTML = "";
+}
+
+// function hideActivityDetails(hide) {
+//   if (hide) {
+//     parkTableBody.style.display = "none";
+//     return;
+//   }
+//   parkTableBody.style.display = "block";
+// }
