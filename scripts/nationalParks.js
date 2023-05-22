@@ -1,6 +1,7 @@
 "use strict";
 
 let statesDDL = document.querySelector("#states-DDL");
+let parkTypesDDL = document.querySelector("#park-types-DDL");
 const parkTableBody = document.querySelector("#parks-table-body");
 
 function buildParkRow(tbody, park) {
@@ -49,28 +50,46 @@ function stateLocationList() {
   }
 }
 
+function parkTypeList() {
+  let count = 0;
+
+  let selectOption = document.createElement("option");
+  selectOption.value = " ";
+  selectOption.textContent = "Select Type...";
+  parkTypesDDL.appendChild(selectOption);
+
+  //Make list of options from array
+  for (const type of parkTypesArray) {
+    let option = new Option(type, count);
+    parkTypesDDL.appendChild(option);
+    count++;
+  }
+}
+
 function checkButtonValue() {
-  const selectedOption = document.querySelector('#button-choices input[name="button-choices"]:checked');
-  return selectedOption ? selectedOption.id : null;
+  // const selectedOption = parseInt(document.querySelector('input[name="button-choices"]:checked').value);
+  const selectedOption = document.querySelector('input[name="button-choices"]:checked').value;
+  if (selectedOption == 1) {
+    stateLocationList();
+  }
+  if (selectedOption == 2) {
+    parkTypeList();
+  }
 }
 
 function filterParksByState(state) {
-  if (checkButtonValue() == "Location") {
-    return nationalParksArray.filter(function (park) {
-      return park.State == state;
-    });
-  }
+  return nationalParksArray.filter(function (park) {
+    return park.State == state;
+  });
 }
 
 function filterParksByType(type) {
-  if (checkButtonValue() == "Type") {
-    return nationalParksArray.filter(function (park) {
-      return park.Location["type"] == type;
-    });
-  }
+  return nationalParksArray.filter(function (park) {
+    return park.LocationName.includes(type);
+  });
 }
 
-function loadParkTable() {
+function loadParkByStateTable() {
   clearTable();
   let stateIndex = parseInt(statesDDL.value);
   let selectedState = statesArray[stateIndex];
@@ -81,8 +100,18 @@ function loadParkTable() {
   }
 }
 
+function loadParkByTypeTable() {
+  clearTable();
+  let typeIndex = parseInt(parkTypesDDL.value);
+  let selectedType = parkTypesArray[typeIndex];
+  let filteredParksByTypeList = filterParksByType(selectedType);
+
+  for (const park of filteredParksByTypeList) {
+    buildParkRow(parkTableBody, park);
+  }
+}
+
 function clearTable() {
   parkTableBody.innerHTML = "";
 }
 
-stateLocationList();
