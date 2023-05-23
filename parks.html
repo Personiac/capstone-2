@@ -56,18 +56,22 @@
           <label for="park-type-button" class="form-check-label">By Type</label>
         </div>
       </section>
-      <select
-        id="states-DDL"
-        onchange="loadParkByStateTable();"
-        style="display: none"
-        class="form-select mb-3"
-      ></select>
-      <select
-        id="park-types-DDL"
-        onchange="loadParkByTypeTable();"
-        style="display: none"
-        class="form-select mb-3"
-      ></select>
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <select
+            id="states-DDL"
+            onchange="loadParkByStateTable();"
+            style="display: none"
+            class="form-select mb-3"
+          ></select>
+          <select
+            id="park-types-DDL"
+            onchange="loadParkByTypeTable();"
+            style="display: none"
+            class="form-select mb-3"
+          ></select>
+        </div>
+      </div>
       <table class="table table-striped">
         <thead>
           <tr>
