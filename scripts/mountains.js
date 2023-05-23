@@ -45,8 +45,9 @@ function displayMountain(mountainIndex) {
 
   if (mountainIndex == " ") {
     clearTable();
+    return;
   }
-  
+
   let mountain = mountainsArray.find(function (mountain, index) {
     return mountainIndex == index;
   });
