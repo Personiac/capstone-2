@@ -28,17 +28,18 @@
       </nav>
     </header>
     <main>
-      <select id="mountain-DDL"></select>
+      <select id="mountains-DDL" onchange="displayMountain(this.value);"></select>
       <table>
         <thead>
           <tr>
+            <th>Image</th>
             <th>Mountain Name</th>
             <th>Description</th>
+            <th>Effort</th>
             <th>Elevation</th>
-            <th>Image</th>
           </tr>
         </thead>
-        <tbody id="parks-table-body"></tbody>
+        <tbody id="mountain-table-body"></tbody>
       </table>
     </main>
     <script src="scripts/mountainData.js"></script>
