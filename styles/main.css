@@ -35,12 +35,6 @@ tbody {
   padding: 20px; /* Example padding for the main content */
 }
 
-.btn-check {
-    position: absolute;
-    clip: rect(0,0,0,0);
-    pointer-events: none;
-}
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -55,7 +49,7 @@ tbody {
 .footer {
   background-color: #edf5e1;
   text-align: center;
-  padding: 40px 0;
+  padding: 1rem 0;
   margin-top: auto;
 }
 
@@ -93,4 +87,4 @@ li a {
 
 .social-links a:last-child {
   margin-right: 0;
-}
+} 
