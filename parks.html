@@ -11,7 +11,7 @@
       integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/main.css" />
   </head>
   <body>
     <header>
@@ -73,20 +73,21 @@
           ></select>
         </div>
       </div>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Address</th>
-            <th>City</th>
-            <th>State</th>
-            <th>ZIP</th>
-            <th>Phone</th>
-            <th>Website</th>
-          </tr>
-        </thead>
-        <tbody id="parks-table-body"></tbody>
-      </table>
+        <table class="table table-striped text-container">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Address</th>
+              <th>City</th>
+              <th>State</th>
+              <th>ZIP</th>
+              <th>Phone</th>
+              <th>Website</th>
+            </tr>
+          </thead>
+
+          <tbody id="parks-table-body"></tbody>
+        </table>
     </main>
     <script src="scripts/locationData.js"></script>
     <script src="scripts/parkTypeData.js"></script>
