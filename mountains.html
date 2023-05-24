@@ -11,10 +11,11 @@
       integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="styles/main.css">
   </head>
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="index.html">Sights & Scales</a>
           <button
@@ -50,18 +51,22 @@
         <label for="mountains-DDL" class="form-label">Select a Mountain:</label>
         <select class="form-select" id="mountains-DDL" onchange="displayMountain(this.value);"></select>
       </div>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Image</th>
-            <th>Mountain Name</th>
-            <th>Description</th>
-            <th>Effort</th>
-            <th>Elevation</th>
-          </tr>
-        </thead>
-        <tbody id="mountain-table-body"></tbody>
-      </table>
+      <div class="row">
+        <div class="col-12 col-md-12">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Mountain Name</th>
+                <th>Description</th>
+                <th>Effort</th>
+                <th>Elevation</th>
+              </tr>
+            </thead>
+            <tbody id="mountain-table-body"></tbody>
+          </table>
+        </div>
+      </div>
     </main>
     <script src="scripts/mountainData.js"></script>
     <script src="scripts/mountains.js"></script>

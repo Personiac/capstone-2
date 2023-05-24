@@ -1,0 +1,16 @@
+body {
+    background: rgb(92,219,89, 0.6);
+}
+
+nav {
+    background-color: #EDF5E1;
+}
+
+.card-body {
+    background-color: #5ac27cc5;
+    /* background: rgba(121, 173, 241, 0.7); */
+}
+
+tbody {
+    background: rgb(92,219,89, 0.35);
+}
