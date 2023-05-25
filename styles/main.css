@@ -12,9 +12,28 @@ nav {
   background-color: #edf5e1;
 }
 
+.nav-link {
+  font-size: large;
+  margin-bottom: 0%;
+}
+
+.navbar-brand {
+  font-weight:bold
+}
+
 .card-body {
   background-color: #edf5e1;
+  border-radius: 0.5rem;
   /* background: rgba(121, 173, 241, 0.7); */
+}
+
+.card {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+img {
+  border-radius: 0.5rem;
 }
 
 tbody {
@@ -64,6 +83,7 @@ tbody {
 
 h4 {
   font-size: 18px;
+  margin-left: 1.6rem;
   margin-bottom: 20px;
 }
 

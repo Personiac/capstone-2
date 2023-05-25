@@ -34,7 +34,7 @@ function buildParkRow(tbody, park) {
   if (!park.Phone) {
     cell6.innerText = "No Phone";
   } else {
-    cell6.innerText = park.Phone;
+    cell6.innerText = `${park.Phone}`;
   }
 
   let cell7 = row.insertCell(6);
