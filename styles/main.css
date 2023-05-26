@@ -1,6 +1,4 @@
-* {
-  color: #fff;
-}
+
 
 body {
   background: rgb(88, 222, 94);
@@ -23,9 +21,22 @@ nav {
   color: #fff;
 }
 
+.navbar-nav > .nav-item > .active {
+  color: #08445c;
+}
+
+
+.navbar-nav .nav-item .nav-link:hover {
+  color: #08445c56 !important;
+}
+
+
 .navbar-brand {
   font-weight:bold;
   color:#fff
+}
+.navbar-brand:hover {
+  color: #08445c56 !important;
 }
 
 .card-body {
@@ -33,6 +44,10 @@ nav {
   border-radius: 0.5rem;
   margin-top: 0.5rem;
   /* background: rgba(121, 173, 241, 0.7); */
+}
+
+h1, h4, p {
+  color: #fff;
 }
 
 .card {
